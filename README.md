@@ -1,8 +1,8 @@
-# Demonstration: How to use the AWS CDK Toolkit to automate deployment of a Vue.js application to AWS S3
+# Demonstration: This project further evolves the [Vue.js to S3 with CDK](https://github.com/austinesmith/cdk-and-vuejs-in-s3) Project into a monolithic repository.
 
-This project uses the **AWS Cloud Development Kit** with Typescript to *leverage automation* with **Vue.js** as the target web application.
+This project uses **Yarn Workspaces** to increase portability by using local dependencies and further automate the deployment with scripting.  The previous project used NPM instead of yarn as a package manager.
 
-The files included in this repository along with the following instructions will allow the reader to automate the deployment of a publicly accessible Vue.js web application to an S3 bucket.
+The files included in this repository along with the following instructions will allow the reader to automate the deployment of a web application using one command.
 
 The purpose is to demonstrate the AWS best practice of **Operational Excellence** by performing *operations as code* as defined by the **AWS Well-Architected Framework**
 <br/>[Read: The 5 Pillars of the AWS Well Architected Framework](https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/)
@@ -27,19 +27,11 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
   * [Read: Access Keys with AWS CLI Tools](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 <br/>
 
-**4. Node.js javascript runtime and Node.js Package Manager (NPM) installed**
-  * [Download: Node.js Package Manager](https://nodejs.org/en/download/package-manager/)
-<br/>
-
-**5. ~~(tentative)~~ VueCLI installed *(globally)***
-  * Can be installed via NPM by running the global command: `npm install -g @vue/cli`
-<br/>
-
-**6. AWS CDK Toolkit installed *(globally)***
-  * Can be installed via NPM by running the global command: `npm install -g aws-cdk`
+**4. Yarn (Yet Another Resource Navigator) Package Manager installed *(globally)***
+  * [Download: Yarn](https://classic.yarnpkg.com/en/docs/install/)
 <br/>
   
-**7. Git Software Change Management installed**
+**5. Git Software Change Management installed**
   * [Download: git-scm](https://git-scm.com/downloads)
 <br/><br/><br/>
 
@@ -48,11 +40,11 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
 
 **1. Use Git to clone this repository to a local machine**
   * In Git Bash, change the current working directory to the location where this repository should be cloned
-  * In the directory run the command: `git clone https://github.com/austinesmith/cdk-and-vuejs-in-s3.git`
+  * In the directory run the command: `git clone https://github.com/austinesmith/monorepo-cdk-vuejs`
 <br/>
 
-**2. Build a production bundle from the Vue.js application source code**
-  * In the `*/cdk-and-vuejs-in-s3/demo-vuejs` directory run the command: `npm run build`
+**2. Install dependencies, build the application, and deploy to AWS with one command**
+  * Point the working directory to `*/monorepo-cdk-vuejs`
   * This will output the Vue.js application to a `dist` folder within its project directory
 <br/>
 
