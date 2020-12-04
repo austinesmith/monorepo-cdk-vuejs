@@ -12,6 +12,7 @@
     "deploy": "yarn --cwd \"./packages/aws-cdk\" cdk deploy",
     "destroy": "yarn --cwd \"./packages/aws-cdk\" cdk destroy -f",
     "build+deploy": "yarn --cwd \"./packages/vuejs-app\" build && yarn --cwd \"./packages/aws-cdk\" cdk deploy --require-approval never",
-    "quickstart": "yarn install && yarn --cwd \"./packages/vuejs-app\" build && yarn --cwd \"./packages/aws-cdk\" cdk deploy --require-approval never --progress=bar"
+    "quick-start": "yarn install && yarn --cwd \"./packages/vuejs-app\" build && yarn --cwd \"./packages/aws-cdk\" cdk deploy --progress=bar --require-approval never",
+    "fresh-start": "yarn install && yarn --cwd \"./packages/vuejs-app\" build && yarn --cwd \"./packages/aws-cdk\" cdk bootstrap && yarn --cwd \"./packages/aws-cdk\" cdk deploy --progress=bar --require-approval never"
   }
 }
