@@ -51,7 +51,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
         * Creates executables for code dependencies in `<project>/node_modules/` directories and `<project>/yarn.lock` files for versioning
       * `yarn build` packages the Vue.js source and assets into an application folder ready for deployment
         * Creates a `*/monorepo-cdk-vuejs/packages/vuejs-app/dist` directory containing web assets and the `*/dist/index.html` needed to access web content
-      * `yarn synth` outputs the generated CloudFormation template to standout for only for the sake of visibility
+      * `yarn synth` outputs the generated CloudFormation template to stdout for the sake of visibility
         * Allows developers to inspect the outcome of code without having to deploy it
       * `yarn bootstrap` creates the initial stack needed for AWS CDK Toolkit to run and should only be used for a first time CDK deployment
         * Creates a stack before the CDK application with resources necessary for the deployment to run successfully
@@ -67,7 +67,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
       
     * Example:
       * `yarn install`, `yarn build`, or `yarn synth` can be run repeatedly without consequence
-        * `yarn deploy` can't be ran more than once until reversed by `yarn destroy`
+        * `yarn deploy` can't be ran more than once without error until reversed by `yarn destroy`
         * `yarn bootstrap` needs to be ran once and only once
 <br/><br/><br/><br/>
 
@@ -87,9 +87,9 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
 
 ### Yarn Workspaces
 
-  * Monolithic repositories can make package management more efficient because developers share dependencies between projects and update many of them at the same time.
+  * Monolithic repositories can make package management more efficient because dependencies are shared between projects and can all be installed/updated at the same time.
   
-  * Steps are even further simplified with Yarn's tools for dependency resolution and package management
+  * Deployment steps are further simplified with Yarn's tools for package management because *monolithic repositorys* root package.json can centrally manage scripts that reach other linked projects.
   
 
 ### Deployment Automation:
@@ -99,7 +99,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
 
 ### Tear Down Automation:
 
-  * The speed of deploying and tearing down infrastructure combined with finding ways to make services increasingly independent is a key inspiration behind the elastic architectures of cloud computing that are cheaper and better performant than traditional monolithic applications
+  * Increased efficiency of deploying and tearing down infrastructure combined with finding ways to make services increasingly independent is a key insight behind elastic architectures that are cheaper and better performant than traditional monolithic applications
 
 
 
