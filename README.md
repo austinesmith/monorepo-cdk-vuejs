@@ -87,9 +87,9 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
 
 ### Yarn Workspaces
 
-  * Monolithic repositories can make package management more efficient because dependencies are shared between projects and can all be installed/updated at the same time.
+  * *Monolithic repositories* can make package management more efficient because dependencies are shared between projects and can all be installed/updated at the same time.
   
-  * Deployment steps are further simplified with Yarn's tools for package management because *monolithic repositorys* root `package.json` can centrally manage scripts that reach other linked projects.
+  * Deployment steps are further simplified with Yarn's tools for package management because a *monolithic repositorie's* root `package.json` can centrally manage scripts that reach other linked projects.
   
 
 ### Deployment Automation:
