@@ -45,32 +45,30 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
 
 **2. Install dependencies, build the application, and deploy to AWS with one command**
   * Point the working directory to `*/monorepo-cdk-vuejs`
-  * Then modify the following command according for the preferred outcome `yarn install+build+synth+bootstrap+deploy`
-    * The command consists of 5 words representing different steps of the deployment process:
-      * `install` uses yarn to download and install the required dependencies for the code to run
+  * Then enter one of the following commands on the preferred outcome:
+    * The command consists of the following 5 words or a combination representing a step in the deployment process:
+      * `yarn install` uses yarn to download and install the required dependencies for the code to run
         * Creates executables for code dependencies in `<project>/node_modules/` directories and `<project>/yarn.lock` files for versioning
-      * `build` packages the Vue.js source and assets into an application folder ready for deployment
+      * `yarn build` packages the Vue.js source and assets into an application folder ready for deployment
         * Creates a `*/monorepo-cdk-vuejs/packages/vuejs-app/dist` directory containing web assets and the `*/dist/index.html` needed to access web content
-      * `synth` outputs the generated CloudFormation template to standout for only for the sake of visibility
+      * `yarn synth` outputs the generated CloudFormation template to standout for only for the sake of visibility
         * Allows developers to inspect the outcome of code without having to deploy it
-      * `bootstrap` creates the initial stack needed for AWS CDK Toolkit to run and should only be used for a first time CDK deployment
+      * `yarn bootstrap` creates the initial stack needed for AWS CDK Toolkit to run and should only be used for a first time CDK deployment
         * Creates a stack before the CDK application with resources necessary for the deployment to run successfully
-      * `deploy` the final step that sends the CloudFormation template to the linked AWS account for resource provisioning
+      * `yarn deploy` the final step that sends the CloudFormation template to the linked AWS account for resource provisioning
         * This is a template structured in `YAML` that strictly defines AWS how to provision resources
+      * `yarn build+synth`
+      * `yarn install+build+synth`
+      * `yarn synth+deploy`
+      * `yarn build+deploy`
+      * `yarn install+build+deploy`
+      * `yarn install+build+synth+bootstrap+deploy`
         
-    * Any combination of these words can be removed from the command as long as all the following conditions are met:
-      1. The arguments passed to the `yarn` command consist of 1-5 of the above words
-      2. The order of the words is maintained exactly as shown above 
-      3. None of the words are repeated
-      4. Every word is separated by the `+` symbol
     * The command will preserve order and process every word as an individual step
     * The command will not move on to the next step unless the previous step completes successfully
-      * Which means if a step fails, every step prior to the failed step will have completed successfully
+    * Which means if a step fails, every step prior to the failed step will have completed successfully
       
-    * Examples:
-      * `yarn install+synth+deploy` 
-        * is syntactically correct
-        * but will fail if either build or bootstrap haven't been ran yet
+    * Example:
       * `yarn install`, `yarn build`, or `yarn synth` can be run repeatedly without consequence
         * `yarn deploy` can't be ran more than once until reversed by `yarn destroy`
         * `yarn bootstrap` needs to be ran once and only once
