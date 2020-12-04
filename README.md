@@ -46,7 +46,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
 **2. Install dependencies, build the application, and deploy it to AWS with one command**
   * Point the current working directory to `*/monorepo-cdk-vuejs`
   * Then run `yarn` with one of the following commands based on the desired outcome:
-    * The command arguments should consist of one the following 5 words or a combination for full automation, each representing a step in the deployment process:
+    * The command arguments should consist of one the following 5 words or a combination for full automation, with each word representing a step in the deployment process:
       * `yarn install` uses yarn to download and install the required dependencies for the code to run
         * Creates executables for code dependencies in `<project>/node_modules/` directories and `<project>/yarn.lock` files for versioning
       * `yarn build` packages the Vue.js source and assets into an application folder ready for deployment
