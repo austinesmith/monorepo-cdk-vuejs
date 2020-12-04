@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="max-width:750px; margin:0 auto;">
     <img alt="Amazon Web Services logo" src="./assets/AWS.jpg" class="responsiveaws"><br/>
     <img alt="Cloud Development Kit logo" src="./assets/cdk.png" class="responsive">
     <img alt="Typescript logo" src="./assets/ts.png" class="responsive">
