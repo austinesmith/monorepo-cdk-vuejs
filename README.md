@@ -1,6 +1,6 @@
 # Demonstration: This project further evolves the [Vue.js to S3 with CDK](https://github.com/austinesmith/cdk-and-vuejs-in-s3) Project into a monolithic repository.
 
-This project uses **Yarn Workspaces** with local dependencies to further automate the deployment with scripting.  It switches the package manager from NPM to Yarn to increase portability.
+This project uses **Yarn Workspaces** with local dependencies to add portability further automate the deployment with scripting.  It switches the package manager from NPM to Yarn to help manage dependencies.
 
 The files included in this repository along with the following instructions will allow the reader to automate the deployment of a web application to s3 with one command.
 
@@ -43,10 +43,10 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
   * In the directory run the command: `git clone https://github.com/austinesmith/monorepo-cdk-vuejs`
 <br/>
 
-**2. Install dependencies, build the application, and deploy to AWS with one command**
-  * Point the working directory to `*/monorepo-cdk-vuejs`
-  * Then enter one of the following commands based on the desired outcome:
-    * The command consists of the following 5 words or a combination representing a step in the deployment process:
+**2. Install dependencies, build the application, and deploy it to AWS with one command**
+  * Point the current working directory to `*/monorepo-cdk-vuejs`
+  * Then run `yarn` with one of the following commands based on the desired outcome:
+    * The command arguments should consist of one the following 5 words or a combination for full automation, each representing a step in the deployment process:
       * `yarn install` uses yarn to download and install the required dependencies for the code to run
         * Creates executables for code dependencies in `<project>/node_modules/` directories and `<project>/yarn.lock` files for versioning
       * `yarn build` packages the Vue.js source and assets into an application folder ready for deployment
@@ -57,7 +57,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
         * Creates a stack before the CDK application with resources necessary for the deployment to run successfully
       * `yarn deploy` the final step that sends the CloudFormation template to the linked AWS account for resource provisioning
         * This is a template structured in `YAML` that strictly defines AWS how to provision resources
-    * The following combinations are available and process the steps in order:
+    * The following combinations are unambiguous and process their steps in order:
       * `yarn build+synth`
       * `yarn install+build+synth`
       * `yarn synth+deploy`
@@ -78,7 +78,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
 **1. Reverse all changes made by the deployment and return the AWS account to its original state**
   * In `*/monorepo-cdk-vuejs`, the same root directory used in the previous step, run the command `yarn destroy`
   * The `yarn destroy` command will reverse all the changes made to the AWS account by the other commands, except it will not remove the CloudFormation stack created by `yarn bootstrap`
-    * Future CDK deployments will not need to be bootstrapped until the `yarn bootstrap` stack is deleted
+    * Future `yarn deploy` commands will not need to be bootstrapped until the `yarn bootstrap` stack is deleted
 <br/><br/><br/><br/>
 
 
