@@ -6,7 +6,6 @@
     "packages/*"
   ],
   "scripts": {
-    "install": "yarn install",
     "build": "yarn --cwd \"./packages/vuejs-app\" build",
     "synth": "yarn --cwd \"./packages/aws-cdk\" cdk synth",
     "build+synth": "yarn --cwd \"./packages/vuejs-app\" build && yarn --cwd \"./packages/aws-cdk\" cdk synth",
