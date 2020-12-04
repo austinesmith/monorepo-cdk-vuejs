@@ -31,7 +31,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
   * [Download: Yarn](https://classic.yarnpkg.com/en/docs/install/)
 <br/>
   
-**5. Git Software Change Management installed*(globally)***
+**5. Git Software Change Management installed *(globally)***
   * [Download: git-scm](https://git-scm.com/downloads)
 <br/><br/><br/><br/>
 
