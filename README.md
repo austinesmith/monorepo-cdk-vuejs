@@ -1,6 +1,6 @@
 # Demonstration: This project further evolves the [Vue.js to S3 with CDK](https://github.com/austinesmith/cdk-and-vuejs-in-s3) Project into a monolithic repository.
 
-[Here is the Resulting Web Application of this Project](http://awscdkstack-websitebucketformonorepodemo082b38ff-14ldkonczygu6.s3-website-us-east-1.amazonaws.com)
+[View: The Result of this Project](http://awscdkstack-websitebucketformonorepodemo082b38ff-14ldkonczygu6.s3-website-us-east-1.amazonaws.com)
 
 This project uses **Yarn Workspaces** and increases portability and further automate the deployment process with scripting.  It switches the package manager from NPM to Yarn to help manage dependencies.
 
