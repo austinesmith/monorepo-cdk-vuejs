@@ -57,7 +57,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
         * Creates a stack before the CDK application with resources necessary for the deployment to run successfully
       * `yarn deploy` the final step that sends the CloudFormation template to the linked AWS account for resource provisioning
         * This is a template structured in `YAML` that strictly defines AWS how to provision resources
-    * The following combinations are unambiguous and process their steps in order:
+    * The following commands are unambiguous and combine the steps to *leverage automation.*  They process their steps in order:
       * `yarn build+synth`
       * `yarn install+build+synth`
       * `yarn synth+deploy`
