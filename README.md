@@ -1,6 +1,6 @@
 # Demonstration: This project further evolves the [Vue.js to S3 with CDK](https://github.com/austinesmith/cdk-and-vuejs-in-s3) Project into a monolithic repository.
 
-This project uses **Yarn Workspaces** to add portability and further automate the deployment process with scripting.  It switches the package manager from NPM to Yarn to help manage dependencies locally.
+This project uses **Yarn Workspaces** and increases portability and further automate the deployment process with scripting.  It switches the package manager from NPM to Yarn to help manage dependencies.
 
 The files included in this repository along with the following instructions will allow the reader to automate the deployment of a web application to s3 with one command.
 
@@ -89,7 +89,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
 
   * Monolithic repositories can make package management more efficient because dependencies are shared between projects and can all be installed/updated at the same time.
   
-  * Deployment steps are further simplified with Yarn's tools for package management because *monolithic repositorys* root package.json can centrally manage scripts that reach other linked projects.
+  * Deployment steps are further simplified with Yarn's tools for package management because *monolithic repositorys* root `package.json` can centrally manage scripts that reach other linked projects.
   
 
 ### Deployment Automation:
