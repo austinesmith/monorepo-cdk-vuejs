@@ -1,8 +1,8 @@
 # Demonstration: This project further evolves the [Vue.js to S3 with CDK](https://github.com/austinesmith/cdk-and-vuejs-in-s3) Project into a monolithic repository.
 
-This project uses **Yarn Workspaces** to increase portability by using local dependencies and further automate the deployment with scripting.  The previous project used NPM instead of yarn as a package manager.
+This project uses **Yarn Workspaces** to increase portability and further automate the deployment with scripting.  It switches the package manager from NPM to Yarn to increase portability.
 
-The files included in this repository along with the following instructions will allow the reader to automate the deployment of a web application using one command.
+The files included in this repository along with the following instructions will allow the reader to automate the deployment of a web application to s3 with one command.
 
 The purpose is to demonstrate the AWS best practice of **Operational Excellence** by performing *operations as code* as defined by the **AWS Well-Architected Framework**
 <br/>[Read: The 5 Pillars of the AWS Well Architected Framework](https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/)
@@ -33,7 +33,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
   
 **5. Git Software Change Management installed**
   * [Download: git-scm](https://git-scm.com/downloads)
-<br/><br/><br/>
+<br/><br/><br/><br/>
 
 
 ## Deployment Instructions:
@@ -45,72 +45,66 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
 
 **2. Install dependencies, build the application, and deploy to AWS with one command**
   * Point the working directory to `*/monorepo-cdk-vuejs`
-  * This will output the Vue.js application to a `dist` folder within its project directory
-<br/>
-
-**3. *(optional)* Inspect the CloudFormation template to be created by the CDK application source code**
-  * In the `*/cdk-and-vuejs-in-s3/demo-cdk` directory run the command: `cdk synth`
-  * The `cdk synth` command will output the CloudFormation template to Stdout structured in YAML
-  * The output will be a human-readable YAML file used for easy inspection prior to deployment
-<br/>
-
-**4. Bootstrap the AWS environment before deployment**
-  * In the `*/cdk-and-vuejs-in-s3/demo-cdk` directory run the command: `cdk bootstrap`
-  * The `cdk bootstrap` command will create an initial CloudFormation stack that includes resources needed by the CDK Toolkit
-  * [Read: AWS CDK Bootstrapping Documentation](https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html)
-<br/>
-
-**5. Deploy the CDK application to an S3 bucket in the AWS account**
-  * In the `*/cdk-and-vuejs-in-s3/demo-cdk` directory run the command: `cdk deploy`
-  * The `cdk deploy` command will egress a CloudFormation template to the AWS account configured within the AWS CLI Tools
-  * The CDK application source to be deployed is defined by the `app:` key in `*/cdk-and-vuejs-in-s3/demo-cdk/cdk.json`
-  * The result is a CloudFormation stack that creates an S3 bucket containing the Vue.js application in the AWS account
-  * The `cdk deploy` command's output to Stdout will contain a confirmation as well as a publicly accessible URL
-<br/>
-
-**6. Access the deployed application via public internet**
-  * Use the URL from the `cdk deploy` command output to access the newly deployed Vue.js application via a web browser
-  * Since the Vue.js application was configured by the CDK application to be public, this URL can be shared to and accessed by anyone on the public internet
-<br/>
-
-**7. *(optional)* Inspect the newly created resources by logging into the AWS Management Console**
-  * The newly created resources can be viewed in the S3 and CloudFormation sections of the AWS Management Console
-  * AWS S3 is an object storage web service that logically separates its files into buckets as key-value pairs
-  * The file objects of the Vue.js web application are stored inside created buckets in the S3 section of the AWS Management Console
-  * Access to these objects is controlled by an associated resource policy (or more specifically, an implicit deny bucket policy)
-  * The CDK application generates CloudFormation templates that can be viewed as stacks in the CloudFormation section of the AWS Management Console
-  * Every resource, file, and permission that was added to the AWS account for the Vue.js application is explicitly defined by the stacks created
-<br/><br/><br/>
+  * Then modify the following command according for the preferred outcome `yarn install+build+synth+bootstrap+deploy`
+    * The command consists of 5 words representing different steps of the deployment process:
+      * `install` uses yarn to download and install the required dependencies for the code to run
+        * Creates executables for code dependencies in `<project>/node_modules/` directories and `<project>/yarn.lock` files for versioning
+      * `build` packages the Vue.js source and assets into an application folder ready for deployment
+        * Creates a `*/monorepo-cdk-vuejs/packages/vuejs-app/dist` directory containing web assets and the `*/dist/index.html` needed to access web content
+      * `synth` outputs the generated CloudFormation template to standout for only for the sake of visibility
+        * Allows developers to inspect the outcome of code without having to deploy it
+      * `bootstrap` creates the initial stack needed for AWS CDK Toolkit to run and should only be used for a first time CDK deployment
+        * Creates a stack before the CDK application with resources necessary for the deployment to run successfully
+      * `deploy` the final step that sends the CloudFormation template to the linked AWS account for resource provisioning
+        * This is a template structured in `YAML` that strictly defines AWS how to provision resources
+        
+    * Any combination of these words can be removed from the command as long as all the following conditions are met:
+      1. The arguments passed to the `yarn` command consist of 1-5 of the above words
+      2. The order of the words is maintained exactly as shown above 
+      3. None of the words are repeated
+      4. Every word is separated by the `+` symbol
+    * The command will preserve order and process every word as an individual step
+    * The command will not move on to the next step unless the previous step completes successfully
+      * Which means if a step fails, every step prior to the failed step will have completed successfully
+      
+    * Examples:
+      * `yarn install+synth+deploy` 
+        * is syntactically correct
+        * but will fail if either build or bootstrap haven't been ran yet
+      * `yarn install`, `yarn build`, or `yarn synth` can be run repeatedly without consequence
+        * `yarn deploy` can't be ran more than once until reversed by `yarn destroy`
+        * `yarn bootstrap` needs to be ran once and only once
+<br/><br/><br/><br/>
 
 
 
 ## Tear Down Instructions:
 
 **1. Reverse all changes made by the deployment and return the AWS account to its original state**
-  * In the `*/cdk-and-vuejs-in-s3/demo-cdk` directory run `cdk destroy`
-  * The `cdk destroy` command will automatically reverse all the changes made to the AWS account by the `cdk deploy` command
-  * CloudFormation templates define how resources are provisioned within the AWS account, but they are stored in a stack data structure until they are explicitly removed
-  * The stack structure allows AWS to remove resources that were created by the CDK application in a LIFO (last in, first out) order
+  * In `*/monorepo-cdk-vuejs`, the same root directory used in the previous step, run the command `yarn destroy`
+  * The `yarn destroy` command will reverse all the changes made to the AWS account by the other commands, except it will not remove the CloudFormation stack created by `yarn bootstrap`
+    * Future CDK deployments will not need to be bootstrapped until the `yarn bootstrap` stack is deleted
 <br/><br/><br/><br/>
+
+
 
 # Project Takeaways
 
+### Yarn Workspaces
+
+  * Monolithic repositories can make package management more efficient because developers share dependencies between projects and update many of them at the same time.
+  
+  * Steps are even further simplified with Yarn's tools for dependency resolution and package management
+  
+
 ### Deployment Automation:
 
-  * Each step of the deployment process was granularized into simple commands that could be scripted or quickly executed
-
-  * At no point during the deployment process was access to the AWS management console required
-
-  * The source logic of this CDK application contained in `*/cdk-and-vuejs-in-s3/demo-cdk/lib/demo-cdk-stack.ts` consists of `8` lines of written code and generates a CloudFormation template consisting of `191` lines of YAML.  This contrast is an example of how the AWS CDK Toolkit can streamline the development process.
-<br/><br/>
+  * The steps for deploying with AWS CDK are much faster and simpler when commands are chained with scripting tools
 
 
 ### Tear Down Automation:
 
-  * Using services in an AWS account can incur a cost and it does not make sense to pay for resources not being used
-
-  * Since both the deployment and the tear down process can be automated, modeling your *infrastructure as code* can significantly reduce costs
-<br/><br/>
+  * The speed of deploying and tearing down infrastructure combined with finding ways to make services increasingly independent is a key inspiration behind the elastic architectures of cloud computing that are cheaper and better performant than traditional monolithic applications
 
 
 
