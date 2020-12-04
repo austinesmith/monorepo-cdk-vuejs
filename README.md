@@ -45,7 +45,7 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
 
 **2. Install dependencies, build the application, and deploy to AWS with one command**
   * Point the working directory to `*/monorepo-cdk-vuejs`
-  * Then enter one of the following commands on the preferred outcome:
+  * Then enter one of the following commands based on the desired outcome:
     * The command consists of the following 5 words or a combination representing a step in the deployment process:
       * `yarn install` uses yarn to download and install the required dependencies for the code to run
         * Creates executables for code dependencies in `<project>/node_modules/` directories and `<project>/yarn.lock` files for versioning
@@ -57,16 +57,13 @@ The purpose is to demonstrate the AWS best practice of **Operational Excellence*
         * Creates a stack before the CDK application with resources necessary for the deployment to run successfully
       * `yarn deploy` the final step that sends the CloudFormation template to the linked AWS account for resource provisioning
         * This is a template structured in `YAML` that strictly defines AWS how to provision resources
+    * The following combinations are available and process the above in order and discrete steps:
       * `yarn build+synth`
       * `yarn install+build+synth`
       * `yarn synth+deploy`
       * `yarn build+deploy`
       * `yarn install+build+deploy`
       * `yarn install+build+synth+bootstrap+deploy`
-        
-    * The command will preserve order and process every word as an individual step
-    * The command will not move on to the next step unless the previous step completes successfully
-    * Which means if a step fails, every step prior to the failed step will have completed successfully
       
     * Example:
       * `yarn install`, `yarn build`, or `yarn synth` can be run repeatedly without consequence
