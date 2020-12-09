@@ -1,7 +1,7 @@
 # Demonstration: This project further evolves the [Vue.js to S3 with CDK](https://github.com/austinesmith/cdk-and-vuejs-in-s3) Project by putting the web application behind a CloudFront Distribution and using Github Actions for continuous deployment.
 
 [View: The Current Status of this Project](http://awscdkstack-websitebucketformonorepodemo082b38ff-14ldkonczygu6.s3-website-us-east-1.amazonaws.com)
-<br/>
+<br/><br/>
 
 **This project was created using the following technologies:**
   * Vue.js: as the web application
