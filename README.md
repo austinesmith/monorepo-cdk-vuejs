@@ -55,6 +55,7 @@ Steps for continuous deployment are defined in the `github-actions.yml` file in 
 **2. Create new Github repository and add the following *Secrets* to the repository**
   * key: `AWS_ACCESS_KEY_ID`, value: `<your unique access key id`
   * key: `AWS_SECRET_ACCESS_KEY`, value: `<your unique secret access key`
+<br/>
   
 **3. Push the project to the newly created repository using Git**
   * The steps for deployment will be added to a *runner* and automatically deployed to the configured AWS account
