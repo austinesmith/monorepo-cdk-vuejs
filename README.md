@@ -1,8 +1,7 @@
 # Demonstration: This project further evolves the [Vue.js to S3 with CDK](https://github.com/austinesmith/cdk-and-vuejs-in-s3) Project by putting the web application behind a CloudFront Distribution and using Github Actions for continuous deployment.
 
 [View: The Current Status of this Project](http://awscdkstack-websitebucketformonorepodemo082b38ff-14ldkonczygu6.s3-website-us-east-1.amazonaws.com)
-
-<br/><br/>
+<br/>
 
 **This project was created using the following technologies:**
   * Vue.js: as the web application
@@ -12,8 +11,7 @@
   * Github Actions: for continuous deployment
   * Yarn: for package management
   * Yarn Workspaces: as a monolithic repository
-
-<br/><br/>
+<br/>
 
 The purpose is to demonstrate an enterprise application using *AWS best practices* as defined by the **AWS Well-Architected Framework**
 <br/>[Read: The 5 Pillars of the AWS Well Architected Framework](https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/)
