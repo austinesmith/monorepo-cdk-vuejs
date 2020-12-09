@@ -2,6 +2,8 @@
 
 [View: The Current Status of this Project](http://awscdkstack-websitebucketformonorepodemo082b38ff-14ldkonczygu6.s3-website-us-east-1.amazonaws.com)
 
+<br/><br/>
+
 **This project was created using the following technologies:**
   * Vue.js: as the web application
   * AWS CDK with Typescript: to automate AWS resource provisioning
@@ -10,6 +12,8 @@
   * Github Actions: for continuous deployment
   * Yarn: for package management
   * Yarn Workspaces: as a monolithic repository
+
+<br/><br/>
 
 The purpose is to demonstrate an enterprise application using *AWS best practices* as defined by the **AWS Well-Architected Framework**
 <br/>[Read: The 5 Pillars of the AWS Well Architected Framework](https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/)
@@ -21,6 +25,7 @@ The purpose is to demonstrate an enterprise application using *AWS best practice
 This project is configured to be continuously redeployed on every push to a Github repository
 
 Steps for continuous deployment are defined in the `github-actions.yml` file in the `.github/workflows/` directory
+<br/><br/><br/><br/>
 
 ## Prerequisites:
 
@@ -28,14 +33,14 @@ Steps for continuous deployment are defined in the `github-actions.yml` file in 
 <br/><br/>
 
 **2. A Github Account**
-  * [Download: AWS CLI Tools](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
-<br/>
+<br/><br/>
 
 **3. AWS Account Access Keys**
   * Access keys are created in the AWS management console
   * Access keys must then be added to Github via the Secrets Manager
   * Best practice is to delete the key after configuration for account security
-  * [Read: AWS Access Keys]()
+  * [Read: AWS Access Keys](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)
+<br/>
   
 **5. Git Software Change Management installed**
   * [Download: git-scm](https://git-scm.com/downloads)
